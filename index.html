@@ -7,7 +7,7 @@
         body { font-family: sans-serif; background: #f0f2f5; padding: 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
         .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-        input, textarea { width: 90%; margin: 5px 0; }
+        input { width: 90%; margin: 5px 0; }
         button { background: #007bff; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; }
     </style>
 </head>
@@ -21,7 +21,12 @@
         <div class="card"><h3>Random Num</h3><button onclick="ranNum()">Get 1-100</button><p id="rNum">-</p></div>
         <div class="card"><h3>Random Color</h3><button onclick="ranCol()">Generate</button><div id="colBox" style="height:30px; margin-top:5px;"></div></div>
         
-        <script>for(let i=7; i<=18; i++) document.write('<div class="card"><h3>Tool '+i+'</h3><p>Coming Soon...</p></div>');</script>
+        <div class="card"><h3>7. Lowercase</h3><input type="text" id="low" oninput="toLow()"><p id="lowOut">-</p></div>
+        <div class="card"><h3>8. Char Counter</h3><input type="text" id="charIn" oninput="countChar()"><p id="charOut">0</p></div>
+        <div class="card"><h3>9. Reverse Text</h3><input type="text" id="revIn" oninput="revText()"><p id="revOut">-</p></div>
+        <div class="card"><h3>10. BMI Calc</h3><input type="number" id="bmiW" placeholder="Kg"><input type="number" id="bmiH" placeholder="Height in M"><button onclick="calcBMI()">Calc</button><p id="bmiOut">-</p></div>
+        
+        <script>for(let i=11; i<=18; i++) document.write('<div class="card"><h3>Tool '+i+'</h3><p>Coming Soon...</p></div>');</script>
     </div>
 
     <script>
@@ -31,6 +36,11 @@
         function toUp() { document.getElementById("upOut").innerText = document.getElementById("up").value.toUpperCase(); }
         function ranNum() { document.getElementById("rNum").innerText = Math.floor(Math.random() * 100) + 1; }
         function ranCol() { let c = '#'+Math.floor(Math.random()*16777215).toString(16); document.getElementById("colBox").style.backgroundColor = c; }
+        // New Functions
+        function toLow() { document.getElementById("lowOut").innerText = document.getElementById("low").value.toLowerCase(); }
+        function countChar() { document.getElementById("charOut").innerText = document.getElementById("charIn").value.length; }
+        function revText() { document.getElementById("revOut").innerText = document.getElementById("revIn").value.split("").reverse().join(""); }
+        function calcBMI() { let w = document.getElementById("bmiW").value; let h = document.getElementById("bmiH").value; document.getElementById("bmiOut").innerText = (w/(h*h)).toFixed(1); }
     </script>
 </body>
 </html>
