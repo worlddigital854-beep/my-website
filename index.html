@@ -2,45 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All Free Web Tools - Full Version</title>
+    <title>All Free Web Tools</title>
     <style>
         body { font-family: sans-serif; background: #0f3460; color: white; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .box { background: #1a1a2e; padding: 15px; border-radius: 15px; border: 1px solid #e94560; text-align: center; }
-        input, textarea { width: 90%; padding: 8px; margin: 5px 0; border-radius: 5px; border: none; }
-        button { background: #e94560; color: white; padding: 8px 15px; border-radius: 5px; border: none; cursor: pointer; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
+        .box { background: #1a1a2e; padding: 20px; border-radius: 15px; border: 1px solid #e94560; text-align: center; }
+        input, textarea, select { width: 90%; padding: 10px; margin: 8px 0; border-radius: 5px; border: none; }
+        button { background: #e94560; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
     <h1 style="text-align:center;">All Free Web Tools</h1>
-    <div class="grid" id="main">
-        <script>
-            const tools = [
-                "Text Counter", "Password Gen", "QR Generator", "BMI Calc", "Typing Test", 
-                "PDF Converter", "BP Tracker", "Sugar Converter", "Unit Converter", 
-                "JSON Formatter", "Base64 Encoder", "CSS Minifier", "HTML Minifier", 
-                "Image Resizer", "Date Calc", "Password Strength", "Meta Tag Gen", "Video Downloader"
-            ];
-            tools.forEach((name, i) => {
-                document.write(`
-                    <div class="box">
-                        <h3>${i + 1}. ${name}</h3>
-                        <input type="text" id="in${i}" placeholder="Input data here...">
-                        <button onclick="runTool(${i})">Run</button>
-                        <p id="out${i}"></p>
-                    </div>
-                `);
-            });
-            function runTool(i) {
-                let val = document.getElementById("in"+i).value;
-                let out = document.getElementById("out"+i);
-                if(i==0) out.innerText = "Words: " + val.split(/\s+/).filter(x=>x).length;
-                else if(i==1) out.innerText = "Pass: " + Math.random().toString(36).slice(-8);
-                else if(i==2) out.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${val}">`;
-                else if(i==3) out.innerText = "BMI: " + (val.split(',')[1] / (val.split(',')[0]**2)).toFixed(1);
-                else out.innerText = "Result: Processed " + tools[i];
-            }
-        </script>
+    <div class="grid">
+        <div class="box"><h3>1. Text Counter</h3><textarea placeholder="Paste text here..."></textarea><button>Count</button></div>
+        <div class="box"><h3>2. Password Gen</h3><input type="number" placeholder="Length"><button>Generate</button></div>
+        <div class="box"><h3>3. QR Generator</h3><input type="text" placeholder="Enter URL/Text"><button>Create QR</button></div>
+        <div class="box"><h3>4. BMI Calc</h3><input type="number" placeholder="Height (m)"><input type="number" placeholder="Weight (kg)"><button>Calculate</button></div>
+        <div class="box"><h3>5. Typing Test</h3><button>Start Test</button></div>
+        <div class="box"><h3>6. PDF Converter</h3><input type="file"><button>Convert to PDF</button></div>
+        <div class="box"><h3>7. BP Tracker</h3><input type="number" placeholder="Systolic"><input type="number" placeholder="Diastolic"><button>Save BP</button></div>
+        <div class="box"><h3>8. Sugar Conv</h3><input type="number" placeholder="mg/dL"><button>Convert</button></div>
+        <div class="box"><h3>9. Unit Conv</h3><input type="number" placeholder="Value"><select><option>Kg to Lbs</option><option>M to Ft</option></select><button>Convert</button></div>
+        <div class="box"><h3>10. JSON Formatter</h3><textarea placeholder="Paste JSON..."></textarea><button>Format</button></div>
+        <div class="box"><h3>11. Base64 Encoder</h3><textarea placeholder="Text to encode..."></textarea><button>Encode</button></div>
+        <div class="box"><h3>12. CSS Minifier</h3><textarea placeholder="Paste CSS..."></textarea><button>Minify</button></div>
+        <div class="box"><h3>13. HTML Minifier</h3><textarea placeholder="Paste HTML..."></textarea><button>Minify</button></div>
+        <div class="box"><h3>14. Image Resizer</h3><input type="file" accept="image/*"><button>Resize Image</button></div>
+        <div class="box"><h3>15. Date Calc</h3><input type="date"><button>Calculate Days</button></div>
+        <div class="box"><h3>16. Password Strength</h3><input type="password" placeholder="Type password..."><button>Check</button></div>
+        <div class="box"><h3>17. Meta Tag Gen</h3><input type="text" placeholder="Site Title"><button>Generate</button></div>
+        <div class="box"><h3>18. Video Downloader</h3><input type="url" placeholder="Paste video link..."><button>Download</button></div>
     </div>
 </body>
 </html>
