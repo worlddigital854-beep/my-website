@@ -2,45 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Web Tools</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }
+        body { font-family: sans-serif; background: #f0f2f5; padding: 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
-        textarea { width: 90%; height: 60px; margin-top: 10px; }
-        button { margin-top: 10px; padding: 10px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+        .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        input, textarea { width: 90%; margin: 5px 0; }
+        button { background: #007bff; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; }
     </style>
 </head>
 <body>
     <h1>All Free Web Tools</h1>
-    <div class="grid" id="toolGrid">
-        <div class="card">
-            <h3>Text Counter</h3>
-            <textarea id="txt" oninput="count()"></textarea>
-            <p>Words: <span id="w">0</span></p>
-        </div>
-        <div class="card">
-            <h3>Password Gen</h3>
-            <button onclick="genPass()">Generate</button>
-            <p id="passOut">-</p>
-        </div>
-        <script>
-            // Text Counter
-            function count() {
-                let t = document.getElementById("txt").value;
-                document.getElementById("w").innerText = t.trim().split(/\s+/).filter(i=>i).length;
-            }
-            // Password Gen
-            function genPass() {
-                document.getElementById("passOut").innerText = Math.random().toString(36).slice(-8);
-            }
-        </script>
-        <script>
-            for(let i=3; i<=18; i++) {
-                document.write('<div class="card"><h3>Tool '+i+'</h3><p>Coming Soon...</p></div>');
-            }
-        </script>
+    <div class="grid">
+        <div class="card"><h3>Text Counter</h3><textarea id="txt" oninput="count()"></textarea><p>Words: <span id="w">0</span></p></div>
+        <div class="card"><h3>Password Gen</h3><button onclick="genPass()">Generate</button><p id="passOut">-</p></div>
+        <div class="card"><h3>Meters to Feet</h3><input type="number" id="m" oninput="conv()"><p id="f">0 ft</p></div>
+        <div class="card"><h3>Uppercase</h3><input type="text" id="up" oninput="toUp()"><p id="upOut">-</p></div>
+        <div class="card"><h3>Random Num</h3><button onclick="ranNum()">Get 1-100</button><p id="rNum">-</p></div>
+        <div class="card"><h3>Random Color</h3><button onclick="ranCol()">Generate</button><div id="colBox" style="height:30px; margin-top:5px;"></div></div>
+        
+        <script>for(let i=7; i<=18; i++) document.write('<div class="card"><h3>Tool '+i+'</h3><p>Coming Soon...</p></div>');</script>
     </div>
+
+    <script>
+        function count() { document.getElementById("w").innerText = document.getElementById("txt").value.trim().split(/\s+/).filter(i=>i).length; }
+        function genPass() { document.getElementById("passOut").innerText = Math.random().toString(36).slice(-8); }
+        function conv() { document.getElementById("f").innerText = (document.getElementById("m").value * 3.28).toFixed(2) + " ft"; }
+        function toUp() { document.getElementById("upOut").innerText = document.getElementById("up").value.toUpperCase(); }
+        function ranNum() { document.getElementById("rNum").innerText = Math.floor(Math.random() * 100) + 1; }
+        function ranCol() { let c = '#'+Math.floor(Math.random()*16777215).toString(16); document.getElementById("colBox").style.backgroundColor = c; }
+    </script>
 </body>
 </html>
