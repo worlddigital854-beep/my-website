@@ -5,32 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Web Tools</title>
     <style>
-        body { font-family: sans-serif; background: #f4f7f6; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1200px; margin: auto; }
-        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
+        body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+        textarea { width: 90%; height: 60px; margin-top: 10px; }
+        button { margin-top: 10px; padding: 10px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
     </style>
 </head>
 <body>
     <h1>All Free Web Tools</h1>
-    <div class="grid">
-        <div class="card"><h3>Text Counter</h3></div>
-        <div class="card"><h3>Password Gen</h3></div>
-        <div class="card"><h3>Image Compressor</h3></div>
-        <div class="card"><h3>PDF Converter</h3></div>
-        <div class="card"><h3>Unit Converter</h3></div>
-        <div class="card"><h3>QR Generator</h3></div>
-        <div class="card"><h3>JSON Formatter</h3></div>
-        <div class="card"><h3>Base64 Encode</h3></div>
-        <div class="card"><h3>CSS Minifier</h3></div>
-        <div class="card"><h3>HTML Minifier</h3></div>
-        <div class="card"><h3>Word Counter</h3></div>
-        <div class="card"><h3>Image Resizer</h3></div>
-        <div class="card"><h3>Date Calc</h3></div>
-        <div class="card"><h3>IP Lookup</h3></div>
-        <div class="card"><h3>Hash Generator</h3></div>
-        <div class="card"><h3>Meta Tag Gen</h3></div>
-        <div class="card"><h3>Slug Generator</h3></div>
-        <div class="card"><h3>Color Picker</h3></div>
+    <div class="grid" id="toolGrid">
+        <div class="card">
+            <h3>Text Counter</h3>
+            <textarea id="txt" oninput="count()"></textarea>
+            <p>Words: <span id="w">0</span></p>
+        </div>
+        <div class="card">
+            <h3>Password Gen</h3>
+            <button onclick="genPass()">Generate</button>
+            <p id="passOut">-</p>
+        </div>
+        <script>
+            // Text Counter
+            function count() {
+                let t = document.getElementById("txt").value;
+                document.getElementById("w").innerText = t.trim().split(/\s+/).filter(i=>i).length;
+            }
+            // Password Gen
+            function genPass() {
+                document.getElementById("passOut").innerText = Math.random().toString(36).slice(-8);
+            }
+        </script>
+        <script>
+            for(let i=3; i<=18; i++) {
+                document.write('<div class="card"><h3>Tool '+i+'</h3><p>Coming Soon...</p></div>');
+            }
+        </script>
     </div>
 </body>
 </html>
