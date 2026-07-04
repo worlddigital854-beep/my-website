@@ -4,13 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>All Free Web Tools</title>
+    <!-- Adsterra Popunder Code -->
     <script src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; margin: 0; }
         h1 { color: #38bdf8; text-align: center; margin-bottom: 30px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
         .box { background: #1e293b; padding: 20px; border-radius: 15px; border: 1px solid #38bdf8; text-align: center; transition: 0.3s; }
-        .box:hover { transform: translateY(-5px); background: #334155; }
+        .box:hover { background: #334155; }
         input, textarea { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; background: #0f172a; color: white; }
         button { background: #38bdf8; color: #0f172a; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer; font-weight: bold; }
     </style>
@@ -18,25 +19,27 @@
 <body>
     <h1>All Free Web Tools</h1>
     <div class="grid">
+        <!-- Social Media Tools -->
         <div class="box"><h3>1. Thumbnail Downloader</h3><input id="u1" placeholder="Video URL"><button onclick="alert('Feature: Fetching thumbnail from ' + document.getElementById('u1').value)">Download</button></div>
-        <div class="box"><h3>2. Hashtag Generator</h3><input id="h1" placeholder="Topic"><button onclick="alert('Top Tags for ' + document.getElementById('h1').value + ': #trending #viral #popular')">Generate</button></div>
-        <div class="box"><h3>3. Caption Generator</h3><input id="c1" placeholder="Post Topic"><button onclick="alert('Best Caption: Level up your game with this post about ' + document.getElementById('c1').value)">Generate</button></div>
+        <div class="box"><h3>2. Hashtag Generator</h3><input id="h1" placeholder="Topic"><button onclick="alert('Tags: #viral #' + document.getElementById('h1').value + ' #trending')">Generate</button></div>
+        <div class="box"><h3>3. Caption Generator</h3><input id="c1" placeholder="Topic"><button onclick="alert('Caption: Elevate your feed with this: ' + document.getElementById('c1').value)">Generate</button></div>
         
-        <div class="box"><h3>4. BMI Calculator</h3><input id="h" placeholder="Height(m)"><input id="w" placeholder="Weight(kg)"><button onclick="alert('BMI: ' + (document.getElementById('w').value / (document.getElementById('h').value**2)).toFixed(1))">Calculate</button></div>
-        <div class="box"><h3>5. Typing Test</h3><button onclick="alert('Typing test session started! Keep typing...')">Start</button></div>
+        <!-- Other Tools -->
+        <div class="box"><h3>4. BMI Calculator</h3><input id="h" placeholder="Height(m)"><input id="w" placeholder="Weight(kg)"><button onclick="alert('BMI: ' + (document.getElementById('w').value / (document.getElementById('h').value**2)).toFixed(1))">Calc</button></div>
+        <div class="box"><h3>5. Typing Test</h3><button onclick="alert('Session started. Type fast!')">Start</button></div>
         <div class="box"><h3>6. PDF Converter</h3><input type="file"><button>Convert</button></div>
-        <div class="box"><h3>7. BP Tracker</h3><input type="number" placeholder="Sys"><input type="number" placeholder="Dia"><button onclick="alert('BP Data Saved Successfully!')">Save</button></div>
+        <div class="box"><h3>7. BP Tracker</h3><input type="number" placeholder="Sys"><input type="number" placeholder="Dia"><button onclick="alert('Data Saved')">Save</button></div>
         <div class="box"><h3>8. Sugar Converter</h3><input type="number" placeholder="mg/dL"><button onclick="alert((document.getElementById('sugar').value / 18).toFixed(2) + ' mmol/L')">Convert</button></div>
-        <div class="box"><h3>9. Unit Converter</h3><input type="number" placeholder="Value"><button onclick="alert('Converted to Metric Successfully!')">Convert</button></div>
-        <div class="box"><h3>10. JSON Formatter</h3><textarea placeholder="Paste JSON..."></textarea><button onclick="alert('JSON Formatted Successfully!')">Format</button></div>
+        <div class="box"><h3>9. Unit Converter</h3><input type="number" placeholder="Value"><button onclick="alert('Converted')">Convert</button></div>
+        <div class="box"><h3>10. JSON Formatter</h3><textarea placeholder="JSON..."></textarea><button onclick="alert('Formatted')">Format</button></div>
         <div class="box"><h3>11. Base64 Encoder</h3><textarea id="b1" placeholder="Text..."></textarea><button onclick="alert('Encoded: ' + btoa(document.getElementById('b1').value))">Encode</button></div>
-        <div class="box"><h3>12. CSS Minifier</h3><textarea placeholder="CSS Code..."></textarea><button onclick="alert('CSS Minified!')">Minify</button></div>
-        <div class="box"><h3>13. HTML Minifier</h3><textarea placeholder="HTML Code..."></textarea><button onclick="alert('HTML Minified!')">Minify</button></div>
+        <div class="box"><h3>12. CSS Minifier</h3><textarea placeholder="CSS..."></textarea><button onclick="alert('Minified')">Minify</button></div>
+        <div class="box"><h3>13. HTML Minifier</h3><textarea placeholder="HTML..."></textarea><button onclick="alert('Minified')">Minify</button></div>
         <div class="box"><h3>14. Image Resizer</h3><input type="file"><button>Resize</button></div>
-        <div class="box"><h3>15. QR Generator</h3><input id="q1" placeholder="URL"><button onclick="window.open('https://api.qrserver.com/v1/create-qr-code/?data='+document.getElementById('q1').value)">Create</button></div>
+        <div class="box"><h3>15. QR Code Generator</h3><input id="q1" placeholder="URL"><button onclick="window.open('https://api.qrserver.com/v1/create-qr-code/?data='+document.getElementById('q1').value)">Create</button></div>
         <div class="box"><h3>16. Password Strength</h3><input type="password" id="p1"><button onclick="alert('Strength: ' + (document.getElementById('p1').value.length > 8 ? 'Strong' : 'Weak'))">Check</button></div>
-        <div class="box"><h3>17. Meta Tag Gen</h3><input placeholder="Title"><button onclick="alert('Meta Tags Generated for your site!')">Generate</button></div>
-        <div class="box"><h3>18. Video Downloader</h3><input placeholder="URL..."><button onclick="alert('Preparing download...')">Download</button></div>
+        <div class="box"><h3>17. Meta Tag Generator</h3><input placeholder="Title"><button onclick="alert('Meta Tags Generated')">Generate</button></div>
+        <div class="box"><h3>18. Video Downloader</h3><input placeholder="URL..."><button onclick="alert('Preparing...')">Download</button></div>
     </div>
 </body>
 </html>
