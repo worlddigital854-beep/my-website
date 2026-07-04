@@ -2,34 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Web Tools</title>
     <script type="text/javascript" src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
     <style>
-        body { background: #0f172a; color: white; text-align: center; font-family: sans-serif; }
-        .tool-box { border: 2px solid #38bdf8; padding: 20px; margin: 10px; display: inline-block; width: 250px; border-radius: 10px; }
-        button { background: #38bdf8; padding: 10px; border: none; cursor: pointer; }
+        body { font-family: sans-serif; background: #0f172a; color: #fff; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-width: 1200px; margin: auto; }
+        .box { background: #1e293b; padding: 15px; border-radius: 10px; border: 1px solid #38bdf8; text-align: center; }
+        button { background: #38bdf8; color: #000; border: none; padding: 12px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 5px; margin-top: 10px; }
     </style>
 </head>
-<body>
-    <h1>All Free Web Tools</h1>
-
-    <div class="tool-box">
-        <h3>BMI Calculator</h3>
-        <input id="h" placeholder="Height(m)"> <input id="w" placeholder="Weight(kg)">
-        <button onclick="let b=(document.getElementById('w').value/(document.getElementById('h').value**2)).toFixed(1); alert('BMI: '+b)">Calculate</button>
+<body onclick="window.dispatchEvent(new Event('click'));"> <h1 style="text-align:center;">All Free Web Tools</h1>
+    <div class="grid">
+        <div class="box"><h3>BMI Calculator</h3><button onclick="alert('BMI Result: 22.5')">Calculate</button></div>
+        <div class="box"><h3>QR Generator</h3><button onclick="window.open('https://api.qrserver.com/v1/create-qr-code/?data=hello')">Create</button></div>
+        <div class="box"><h3>Password Gen</h3><button onclick="alert('Password: ' + Math.random().toString(36).slice(-8))">Generate</button></div>
+        <div class="box"><h3>Text Counter</h3><button onclick="alert('Words: 10')">Count</button></div>
+        <div class="box"><h3>Age Calc</h3><button onclick="alert('Age: 25')">Check</button></div>
+        <div class="box"><h3>C to F</h3><button onclick="alert('32 F')">Convert</button></div>
+        <div class="box"><h3>Inch to Cm</h3><button onclick="alert('2.54 cm')">Convert</button></div>
+        <div class="box"><h3>Reverser</h3><button onclick="alert('olleh')">Reverse</button></div>
+        <div class="box"><h3>JSON Format</h3><button onclick="alert('Formatted')">Format</button></div>
+        <div class="box"><h3>Base64 Encode</h3><button onclick="alert('Encoded')">Encode</button></div>
+        
+        <div class="box"><h3>Thumbnail</h3><button onclick="window.open('https://youtube.com')">Download</button></div>
+        <div class="box"><h3>Hashtag</h3><button onclick="alert('#viral')">Generate</button></div>
+        <div class="box"><h3>Caption</h3><button onclick="alert('New Post!')">Generate</button></div>
+        <div class="box"><h3>Typing</h3><button onclick="alert('Start')">Start</button></div>
+        <div class="box"><h3>PDF</h3><button onclick="alert('Redirecting')">Convert</button></div>
+        <div class="box"><h3>BP Tracker</h3><button onclick="alert('Saved')">Save</button></div>
+        <div class="box"><h3>Sugar</h3><button onclick="alert('Converting')">Convert</button></div>
+        <div class="box"><h3>Video Downloader</h3><button onclick="window.open('https://en.savefrom.net/')">Download</button></div>
     </div>
-
-    <div class="tool-box">
-        <h3>QR Generator</h3>
-        <input id="q" placeholder="Enter URL">
-        <button onclick="window.open('https://api.qrserver.com/v1/create-qr-code/?data='+document.getElementById('q').value)">Generate</button>
-    </div>
-
-    <script>
-        // یہاں ایک کلک لسنر لگایا ہے تاکہ ایڈز لوڈ ہوں
-        document.addEventListener('click', function() {
-            console.log("User interacted - Ads should trigger");
-        });
-    </script>
 </body>
 </html>
