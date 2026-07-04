@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Web Tools</title>
     <script type="text/javascript" src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
     <style>
-        body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; margin: 0; }
+        body { background: #0f172a; color: white; font-family: sans-serif; padding: 20px; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
         .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; text-align: center; }
-        input, textarea { width: 90%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.1); color: white; box-sizing: border-box; }
-        button { width: 90%; padding: 12px; border-radius: 8px; border: none; background: #38bdf8; color: #0f172a; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #7dd3fc; }
+        input, textarea { width: 90%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.1); color: white; }
+        button { width: 90%; padding: 12px; border-radius: 8px; border: none; background: #38bdf8; color: black; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -20,28 +18,20 @@
     <div class="grid-container">
 
         <div class="glass-card">
+            <h3>Text Counter</h3>
+            <textarea id="tArea" rows="4" placeholder="Type here..."></textarea>
+            <button onclick="
+                let txt = document.getElementById('tArea').value.trim();
+                let words = txt.length === 0 ? 0 : txt.split(/\s+/).filter(w => w.length > 0).length;
+                alert('Total Words: ' + words);
+            ">Count Words</button>
+        </div>
+
+        <div class="glass-card">
             <h3>BMI Calculator</h3>
             <input type="number" id="h" placeholder="Height (cm)">
             <input type="number" id="w" placeholder="Weight (kg)">
-            <button onclick="let h=document.getElementById('h').value/100; let w=document.getElementById('w').value; if(h>0 && w>0) alert('Your BMI is: '+(w/(h*h)).toFixed(1)); else alert('Please enter valid data!');">Calculate</button>
-        </div>
-
-        <div class="glass-card">
-            <h3>QR Generator</h3>
-            <input type="text" id="qText" placeholder="Enter URL/Text">
-            <button onclick="let t=document.getElementById('qText').value; if(t) document.getElementById('qrRes').innerHTML='<img src=\'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+encodeURIComponent(t)+'\'>'; else alert('Enter text first!');">Create</button>
-            <div id="qrRes" style="margin-top:15px;"></div>
-        </div>
-
-        <div class="glass-card">
-            <h3>Text Counter</h3>
-            <textarea id="tArea" rows="3" placeholder="Type here..."></textarea>
-            <button onclick="let txt=document.getElementById('tArea').value.trim(); let count = txt === '' ? 0 : txt.split(/\s+/).length; alert('Total Words: ' + count)">Count Words</button>
-        </div>
-
-        <div class="glass-card">
-            <h3>Password Generator</h3>
-            <button onclick="alert('Your Password: ' + Math.random().toString(36).slice(-10))">Generate New</button>
+            <button onclick="let h=document.getElementById('h').value/100; let w=document.getElementById('w').value; if(h>0 && w>0) alert('BMI: '+(w/(h*h)).toFixed(1)); else alert('Enter valid data');">Calculate</button>
         </div>
 
     </div>
