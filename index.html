@@ -2,41 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Web Tools</title>
     <script type="text/javascript" src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
-    <script type="text/javascript" data-cfasync="false" src="//pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
     <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; padding: 20px; margin: 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
-        .box { background: #1e293b; padding: 15px; border-radius: 12px; border: 1px solid #38bdf8; text-align: center; }
-        input, textarea { width: 90%; padding: 8px; margin: 5px 0; border-radius: 5px; border: none; background: #0f172a; color: white; }
-        button { background: #38bdf8; color: #000; padding: 8px 15px; border-radius: 5px; border: none; cursor: pointer; font-weight: bold; width: 90%; }
-        h1 { color: #38bdf8; text-align: center; }
+        body { background: #0f172a; color: white; text-align: center; font-family: sans-serif; }
+        .tool-box { border: 2px solid #38bdf8; padding: 20px; margin: 10px; display: inline-block; width: 250px; border-radius: 10px; }
+        button { background: #38bdf8; padding: 10px; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
     <h1>All Free Web Tools</h1>
-    <div class="grid">
-        <div class="box"><h3>1. Text Counter</h3><textarea id="t1"></textarea><button onclick="alert('Words: ' + document.getElementById('t1').value.trim().split(/\s+/).filter(x=>x).length)">Count</button></div>
-        <div class="box"><h3>2. BMI Calculator</h3><input id="h" placeholder="Height(m)"><input id="w" placeholder="Weight(kg)"><button onclick="alert('BMI: ' + (document.getElementById('w').value/(document.getElementById('h').value**2)).toFixed(1))">Calc</button></div>
-        <div class="box"><h3>3. QR Generator</h3><input id="q1" placeholder="URL"><button onclick="window.open('https://api.qrserver.com/v1/create-qr-code/?data='+document.getElementById('q1').value)">Create</button></div>
-        <div class="box"><h3>4. Base64 Encoder</h3><input id="b1" placeholder="Text"><button onclick="document.getElementById('b1').value = btoa(document.getElementById('b1').value)">Encode</button></div>
-        <div class="box"><h3>5. Password Gen</h3><button onclick="alert('Pass: ' + Math.random().toString(36).slice(-8))">Generate</button></div>
-        <div class="box"><h3>6. Inch to Cm</h3><input id="i1" placeholder="Inches"><button onclick="alert((document.getElementById('i1').value * 2.54).toFixed(2) + ' cm')">Convert</button></div>
-        <div class="box"><h3>7. JSON Formatter</h3><textarea id="j1"></textarea><button onclick="try{document.getElementById('j1').value=JSON.stringify(JSON.parse(document.getElementById('j1').value),null,4)}catch(e){alert('Error')}">Format</button></div>
-        <div class="box"><h3>8. Age Calc</h3><input id="y1" placeholder="Birth Year"><button onclick="alert('Age: ' + (2026 - document.getElementById('y1').value))">Check</button></div>
-        <div class="box"><h3>9. C to F</h3><input id="c2" placeholder="Celsius"><button onclick="alert((document.getElementById('c2').value * 9/5 + 32).toFixed(1) + ' °F')">Convert</button></div>
-        <div class="box"><h3>10. Word Reverser</h3><input id="r1"><button onclick="alert(document.getElementById('r1').value.split('').reverse().join(''))">Reverse</button></div>
-        
-        <div class="box"><h3>11. Thumbnail Downloader</h3><button onclick="window.open('https://www.google.com')">Download</button></div>
-        <div class="box"><h3>12. Hashtag Generator</h3><button onclick="alert('#viral #trending #social')">Generate</button></div>
-        <div class="box"><h3>13. Caption Generator</h3><button onclick="alert('Best post ever!')">Generate</button></div>
-        <div class="box"><h3>14. Typing Test</h3><button onclick="alert('Coming Soon')">Start</button></div>
-        <div class="box"><h3>15. PDF Converter</h3><button onclick="alert('Redirecting...')">Convert</button></div>
-        <div class="box"><h3>16. BP Tracker</h3><button onclick="alert('Saved locally')">Save</button></div>
-        <div class="box"><h3>17. Sugar Converter</h3><button onclick="alert('Converting...')">Convert</button></div>
-        <div class="box"><h3>18. Video Downloader</h3><button onclick="window.open('https://en.savefrom.net/')">Download</button></div>
+
+    <div class="tool-box">
+        <h3>BMI Calculator</h3>
+        <input id="h" placeholder="Height(m)"> <input id="w" placeholder="Weight(kg)">
+        <button onclick="let b=(document.getElementById('w').value/(document.getElementById('h').value**2)).toFixed(1); alert('BMI: '+b)">Calculate</button>
     </div>
+
+    <div class="tool-box">
+        <h3>QR Generator</h3>
+        <input id="q" placeholder="Enter URL">
+        <button onclick="window.open('https://api.qrserver.com/v1/create-qr-code/?data='+document.getElementById('q').value)">Generate</button>
+    </div>
+
+    <script>
+        // یہاں ایک کلک لسنر لگایا ہے تاکہ ایڈز لوڈ ہوں
+        document.addEventListener('click', function() {
+            console.log("User interacted - Ads should trigger");
+        });
+    </script>
 </body>
 </html>
