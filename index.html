@@ -22,7 +22,36 @@
     <div class="search-container">
         <input type="text" id="searchBox" placeholder="🔍 Search tools (e.g. BMI, QR, Caption)..." onkeyup="filterTools()">
     </div>
+<div id="ai-tools-section" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+    <h3>AI Content Suite</h3>
+    <input type="text" id="topicInput" placeholder="अपना टॉपिक यहाँ लिखें..." style="width: 80%; padding: 10px;">
+    
+    <div style="margin-top: 15px;">
+        <button onclick="handleTool('script')">Generate Script</button>
+        <button onclick="handleTool('hooks')">Generate Hooks</button>
+        <button onclick="handleTool('repurpose')">Repurpose Content</button>
+        <button onclick="handleTool('seo')">Optimize SEO</button>
+    </div>
 
+    <div id="resultOutput" style="margin-top: 20px; padding: 10px; background: #f9f9f9; min-height: 50px;">
+        यहाँ रिजल्ट दिखेगा...
+    </div>
+</div>
+
+<script>
+class AIContentEngine {
+    async process(tool, topic) {
+        return `यहाँ ${tool} का रिजल्ट आएगा (API कनेक्ट करने के बाद)...`;
+    }
+}
+
+async function handleTool(tool) {
+    const topic = document.getElementById('topicInput').value;
+    const engine = new AIContentEngine();
+    const result = await engine.process(tool, topic);
+    document.getElementById('resultOutput').innerText = result;
+}
+</script>
     <div class="grid" id="toolGrid">
         <div class="card"><h3>AI Content Detector</h3><textarea id="aiText" placeholder="Paste text here"></textarea><button onclick="alert('Analysis: This content appears to be human-written with 85% confidence.')">Analyze</button></div>
         <div class="card"><h3>Keyword Density</h3><input id="keyText" placeholder="Text"><input id="keyWord" placeholder="Keyword"><button onclick="let t=document.getElementById('keyText').value.split(' '); let k=document.getElementById('keyWord').value; alert('Density: ' + ((t.filter(w=>w==k).length/t.length)*100).toFixed(1) + '%')">Check</button></div>
