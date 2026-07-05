@@ -22,6 +22,7 @@
     <div class="search-container">
         <input type="text" id="searchBox" placeholder="🔍 Search tools (e.g. BMI, QR, Caption)..." onkeyup="filterTools()">
     </div>
+
 <div id="ai-tools-section" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
     <h3>AI Content Suite</h3>
     <input type="text" id="topicInput" placeholder="Enter Your Topic Here..." style="width: 80%; padding: 10px;">
@@ -33,32 +34,42 @@
         <button onclick="handleTool('seo')">Optimize SEO</button>
     </div>
 
-    <div id="resultOutput" style="margin-top: 20px; padding: 10px; background: #f9f9f9; min-height: 50px;">
+    <script>
+    async function handleTool(tool) {
+        const topic = document.getElementById('topicInput').value;
+        const resultBox = document.getElementById('resultOutput');
+        const API_KEY = "AQ.Ab8RN6Lzz563jITPzfWVHZcyWn9aygvyWowZJkGLP7cbzd2PjQ"; 
+        
+        if (!topic) { alert("Please enter a topic!"); return; }
+        resultBox.innerText = "Generating " + tool + "... please wait.";
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: `Write a ${tool} about: ${topic}` }] }] })
+            });
+            const data = await response.json();
+            resultBox.innerText = data.candidates[0].content.parts[0].text;
+        } catch (error) {
+            resultBox.innerText = "Error: Could not connect to API.";
+        }
+    }
+    </script>
+
+    <div id="resultOutput" style="margin-top: 20px; padding: 10px; background: #f9f9f9; min-height: 50px; color: black;">
         "Result Will Appear Here..."
     </div>
 </div>
 
-<script>
-class AIContentEngine {
-    async process(tool, topic) {
-        return `यहाँ ${tool} का रिजल्ट आएगा (API कनेक्ट करने के बाद)...`;
-    }
-}
-
-async function handleTool(tool) {
-    const topic = document.getElementById('topicInput').value;
-    const engine = new AIContentEngine();
-    const result = await engine.process(tool, topic);
-    document.getElementById('resultOutput').innerText = result;
-}
-</script>
     <div class="grid" id="toolGrid">
         <div class="card"><h3>AI Content Detector</h3><textarea id="aiText" placeholder="Paste text here"></textarea><button onclick="alert('Analysis: This content appears to be human-written with 85% confidence.')">Analyze</button></div>
         <div class="card"><h3>Keyword Density</h3><input id="keyText" placeholder="Text"><input id="keyWord" placeholder="Keyword"><button onclick="let t=document.getElementById('keyText').value.split(' '); let k=document.getElementById('keyWord').value; alert('Density: ' + ((t.filter(w=>w==k).length/t.length)*100).toFixed(1) + '%')">Check</button></div>
         <div class="card"><h3>Insta Caption</h3><input id="insta" placeholder="Topic"><button onclick="alert('Caption: Elevating my ' + document.getElementById('insta').value + ' game! 🚀 #trending #vibes')">Generate</button></div>
         <div class="card"><h3>JSON Formatter</h3><textarea id="json" placeholder="Paste JSON"></textarea><button onclick="try{document.getElementById('json').value=JSON.stringify(JSON.parse(document.getElementById('json').value),null,4)}catch(e){alert('Invalid JSON')}">Format</button></div>
         <div class="card"><h3>Word Reverser</h3><input id="rev" placeholder="Text"><button onclick="alert(document.getElementById('rev').value.split('').reverse().join(''))">Reverse</button></div>
-
         <div class="card"><h3>Text Counter</h3><textarea id="tArea" rows="3"></textarea><button onclick="let t=document.getElementById('tArea').value.trim(); alert('Words: ' + (t===''?0:t.split(/\s+/).filter(w=>w.length>0).length))">Count</button></div>
         <div class="card"><h3>BMI Calculator</h3><input type="number" id="h" placeholder="Height(cm)"><input type="number" id="w" placeholder="Weight(kg)"><button onclick="let h=document.getElementById('h').value/100; let w=document.getElementById('w').value; if(h>0) alert('BMI: '+(w/(h*h)).toFixed(1));">Calculate</button></div>
         <div class="card"><h3>QR Generator</h3><input type="text" id="qText" placeholder="Enter URL"><button onclick="let t=document.getElementById('qText').value; if(t) document.getElementById('qrRes').innerHTML='<img src=\'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data='+t+'\'>';">Create</button><div id="qrRes"></div></div>
@@ -66,9 +77,7 @@ async function handleTool(tool) {
         <div class="card"><h3>Inch to Cm</h3><input type="number" id="inch" placeholder="Inches"><button onclick="alert((document.getElementById('inch').value * 2.54).toFixed(2) + ' cm')">Convert</button></div>
         <div class="card"><h3>C to F</h3><input id="c" placeholder="Celsius"><button onclick="alert((document.getElementById('c').value*9/5+32)+' °F')">Convert</button></div>
         <div class="card"><h3>Age Calc</h3><input id="y" placeholder="Birth Year"><button onclick="alert('Age: '+(2026-document.getElementById('y').value))">Check</button></div>
-        <div class="card"><h3>Word Reverse</h3><input id="rev2" placeholder="Text"><button onclick="alert(document.getElementById('rev2').value.split('').reverse().join(''))">Reverse</button></div>
         <div class="card"><h3>Base64 Encode</h3><input id="b64" placeholder="Text"><button onclick="alert(btoa(document.getElementById('b64').value))">Encode</button></div>
-        <div class="card"><h3>JSON Format</h3><textarea id="json2"></textarea><button onclick="try{document.getElementById('json2').value=JSON.stringify(JSON.parse(document.getElementById('json2').value),null,4)}catch(e){alert('Error')}">Format</button></div>
         <div class="card"><h3>Thumbnail</h3><input id="ytlink" placeholder="Video URL"><button onclick="window.open('https://www.youtube.com/watch?v='+document.getElementById('ytlink').value.split('v=')[1])">Open</button></div>
         <div class="card"><h3>Hashtag</h3><input id="hash" placeholder="Topic"><button onclick="alert('#'+document.getElementById('hash').value+' #viral #trending #fyp')">Generate</button></div>
         <div class="card"><h3>Caption</h3><input id="capt" placeholder="Topic"><button onclick="alert('Best '+document.getElementById('capt').value+' of the day! 🔥')">Generate</button></div>
