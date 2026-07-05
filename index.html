@@ -4,43 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Web Tools</title>
+    <!-- Adsterra & Smart Link -->
     <script type="text/javascript" src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
     <style>
         body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+        .search-container { text-align: center; margin-bottom: 30px; }
+        #searchBox { width: 80%; max-width: 500px; padding: 12px; border-radius: 25px; border: none; outline: none; background: #1e293b; color: white; text-align: center; border: 1px solid #38bdf8; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
-        /* AI Box को बड़ा करने के लिए */
-        .ai-card { background: rgba(56, 189, 248, 0.1); border: 2px solid #38bdf8; grid-column: 1 / -1; padding: 30px; border-radius: 15px; text-align: center; }
-        .card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; text-align: center; }
-        textarea { width: 95%; height: 100px; padding: 10px; border-radius: 8px; background: #1e293b; color: white; border: none; }
-        input { width: 90%; padding: 10px; margin: 5px; border-radius: 8px; border: none; background: #1e293b; color: white; }
-        button { padding: 10px 20px; border-radius: 8px; border: none; background: #38bdf8; font-weight: bold; cursor: pointer; }
+        .ai-card { background: rgba(56, 189, 248, 0.1); border: 2px solid #38bdf8; grid-column: 1 / -1; padding: 20px; border-radius: 15px; text-align: center; margin-top: 20px; }
+        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; text-align: center; }
+        input, textarea { width: 90%; padding: 10px; margin: 8px 0; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.1); color: white; }
+        button { width: 92%; padding: 10px; border-radius: 8px; border: none; background: #38bdf8; color: black; font-weight: bold; cursor: pointer; margin-top: 5px; }
+        .api-link { color: #38bdf8; font-size: 0.8em; display: block; margin-top: 5px; }
     </style>
 </head>
 <body>
-    <h1 style="text-align:center;">All Free Web Tools</h1>
 
-    <div class="grid">
+    <h1 style="text-align:center; color:#38bdf8;">All Free Web Tools</h1>
+    
+    <div class="search-container">
+        <input type="text" id="searchBox" placeholder="🔍 Search tools..." onkeyup="filterTools()">
+    </div>
+
+    <div class="grid" id="toolGrid">
+        <!-- 18 Tools Grid -->
+        <div class="card"><h3>Keyword Density</h3><input id="keyText" placeholder="Text"><input id="keyWord" placeholder="Keyword"><button onclick="let t=document.getElementById('keyText').value.split(' '); let k=document.getElementById('keyWord').value; alert('Density: ' + ((t.filter(w=>w==k).length/t.length)*100).toFixed(1) + '%')">Check</button></div>
+        <div class="card"><h3>Insta Caption</h3><input id="insta" placeholder="Topic"><button onclick="alert('Caption: Elevating my ' + document.getElementById('insta').value + ' game! 🚀')">Generate</button></div>
+        <div class="card"><h3>JSON Formatter</h3><textarea id="json" placeholder="Paste JSON"></textarea><button onclick="try{document.getElementById('json').value=JSON.stringify(JSON.parse(document.getElementById('json').value),null,4)}catch(e){alert('Invalid JSON')}">Format</button></div>
+        <div class="card"><h3>Word Reverser</h3><input id="rev" placeholder="Text"><button onclick="alert(document.getElementById('rev').value.split('').reverse().join(''))">Reverse</button></div>
+        <div class="card"><h3>Text Counter</h3><textarea id="tArea" rows="3"></textarea><button onclick="let t=document.getElementById('tArea').value.trim(); alert('Words: ' + (t===''?0:t.split(/\s+/).filter(w=>w.length>0).length))">Count</button></div>
+        <div class="card"><h3>BMI Calculator</h3><input type="number" id="h" placeholder="Height(cm)"><input type="number" id="w" placeholder="Weight(kg)"><button onclick="let h=document.getElementById('h').value/100; let w=document.getElementById('w').value; if(h>0) alert('BMI: '+(w/(h*h)).toFixed(1));">Calculate</button></div>
+        <div class="card"><h3>QR Generator</h3><input type="text" id="qText" placeholder="Enter URL"><button onclick="let t=document.getElementById('qText').value; if(t) document.getElementById('qrRes').innerHTML='<img src=\'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data='+t+'\'>';">Create</button><div id="qrRes"></div></div>
+        <div class="card"><h3>Password Gen</h3><button onclick="alert('Pass: ' + Math.random().toString(36).slice(-8))">Generate</button></div>
+        <div class="card"><h3>Inch to Cm</h3><input type="number" id="inch" placeholder="Inches"><button onclick="alert((document.getElementById('inch').value * 2.54).toFixed(2) + ' cm')">Convert</button></div>
+        <div class="card"><h3>C to F</h3><input id="c" placeholder="Celsius"><button onclick="alert((document.getElementById('c').value*9/5+32)+' °F')">Convert</button></div>
+        <div class="card"><h3>Age Calc</h3><input id="y" placeholder="Birth Year"><button onclick="alert('Age: '+(2026-document.getElementById('y').value))">Check</button></div>
+        <div class="card"><h3>Base64 Encode</h3><input id="b64" placeholder="Text"><button onclick="alert(btoa(document.getElementById('b64').value))">Encode</button></div>
+        <div class="card"><h3>JSON Format</h3><textarea id="json2"></textarea><button onclick="try{document.getElementById('json2').value=JSON.stringify(JSON.parse(document.getElementById('json2').value),null,4)}catch(e){alert('Error')}">Format</button></div>
+        <div class="card"><h3>Thumbnail</h3><input id="ytlink" placeholder="Video URL"><button onclick="window.open('https://www.youtube.com/watch?v='+document.getElementById('ytlink').value.split('v=')[1])">Open</button></div>
+        <div class="card"><h3>Hashtag</h3><input id="hash" placeholder="Topic"><button onclick="alert('#'+document.getElementById('hash').value+' #viral #trending')">Generate</button></div>
+        <div class="card"><h3>Typing Test</h3><button onclick="let s=prompt('Type: Quick brown fox'); if(s=='Quick brown fox') alert('Correct!'); else alert('Try again!');">Start Test</button></div>
+        <div class="card"><h3>PDF</h3><button onclick="window.open('https://online2pdf.com/')">Convert</button></div>
+        <div class="card"><h3>BP Tracker</h3><input id="bp" placeholder="Systolic/Diastolic"><button onclick="alert('Saved: '+document.getElementById('bp').value)">Save</button></div>
+        <div class="card"><h3>Sugar</h3><input id="sug" placeholder="mg/dL"><button onclick="alert('Level: '+document.getElementById('sug').value + ' mg/dL')">Check</button></div>
+        <div class="card"><h3>Video DL</h3><input id="vlink" placeholder="Paste URL"><button onclick="window.open('https://en.savefrom.net/')">Download</button></div>
+
+        <!-- AI Detector Box at the bottom -->
         <div class="ai-card">
             <h2>AI Content Detector</h2>
-            <textarea id="aiText" placeholder="Paste your content here..."></textarea><br>
-            <input type="text" id="apiKey" placeholder="Enter your Google API Key">
-            <a href="https://console.cloud.google.com/" target="_blank" style="color:#38bdf8; display:block; margin:10px;">Get API Key</a>
-            <button onclick="alert('API Connection Active!')">Analyze Content</button>
+            <textarea id="aiText" placeholder="Paste content here..."></textarea>
+            <input type="text" id="apiKey" placeholder="Enter Google API Key">
+            <a href="https://console.cloud.google.com/" target="_blank" class="api-link">Get your Google API Key here</a>
+            <button onclick="alert('Analysis initiated')">Analyze Content</button>
         </div>
+    </div>
 
-        <div class="card">
-            <h3>Insta Caption</h3>
-            <input id="insta" placeholder="Topic (e.g. Travel)">
-            <button onclick="alert('Caption: ' + document.getElementById('insta').value + ' vibes only! ✨ #trending #viral #content')">Generate</button>
-        </div>
-
-        <div class="card">
-            <h3>Keyword Density</h3>
-            <input id="keyText" placeholder="Full Text">
-            <input id="keyWord" placeholder="Keyword">
-            <button onclick="let t=document.getElementById('keyText').value.split(' '); let k=document.getElementById('keyWord').value; alert('Density: ' + ((t.filter(w=>w.toLowerCase()==k.toLowerCase()).length/t.length)*100).toFixed(1) + '%')">Check</button>
-        </div>
-        
-        </div>
+    <script>
+        function filterTools() {
+            let query = document.getElementById('searchBox').value.toLowerCase();
+            let cards = document.getElementsByClassName('card');
+            for (let card of cards) {
+                let title = card.getElementsByTagName('h3')[0].innerText.toLowerCase();
+                card.style.display = title.includes(query) ? "block" : "none";
+            }
+        }
+    </script>
 </body>
 </html>
