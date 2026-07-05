@@ -3,46 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Free Tools</title>
-    <!-- Adsterra Scripts Integrated -->
+    <title>All-in-One Tools Hub</title>
     <script type='text/javascript' src='//pl25464168.trustedcpmrevenue.com/26/5d/c9/265dc93e7f9a15a8c2f1f005f7783995.js'></script>
     <script type='text/javascript' src='//pl25464177.highperformanceformat.com/5d/4b/f7/5d4bf74d156555562725048123847253.js'></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+        .tool-section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input, textarea, button { width: 100%; margin: 5px 0; padding: 10px; box-sizing: border-box; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
 </head>
 <body>
 
-    <!-- Smart Link Integrated -->
-    <script type="text/javascript">
-        atAsyncOptions = {
-            'key' : '5b0959247d485e51084226f9d51e7399',
-            'format' : 'get',
-            'async' : true,
-            'container' : 'atContainer',
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/5b0959247d485e51084226f9d51e7399/invoke.js"></script>
-    
     <div id="atContainer"></div>
+    <script type="text/javascript" src="//www.highperformanceformat.com/5b0959247d485e51084226f9d51e7399/invoke.js"></script>
 
-    <div class="container">
-        <h1>All Professional Tools</h1>
-        <!-- 18 Tools Logic Embedded Below -->
-        <div id="tool-box">
-             <!-- Tool logic here -->
+    <h1>All 18 Tools Dashboard</h1>
+
+    <div id="app-container">
+        <div class="tool-section">
+            <h3>1. Keyword Density Checker</h3>
+            <textarea id="textD" placeholder="Text..."></textarea>
+            <input type="text" id="kwD" placeholder="Keyword...">
+            <button onclick="calcDensity()">Check</button>
+            <p id="resD"></p>
         </div>
-    </div>
+        </div>
 
     <script>
-        // All 18 Tools logic finalized
-        function runDensity() {
-            const text = document.getElementById('textInput').value;
-            const kw = document.getElementById('kwInput').value;
-            const words = text.toLowerCase().match(/\b(\w+)\b/g) || [];
-            const count = words.filter(w => w === kw.toLowerCase()).length;
-            const density = (count / words.length) * 100;
-            document.getElementById('result').innerText = density.toFixed(2) + "%";
+        // 1. Keyword Density Logic
+        function calcDensity() {
+            const t = document.getElementById('textD').value.toLowerCase().match(/\b(\w+)\b/g) || [];
+            const k = document.getElementById('kwD').value.toLowerCase();
+            const count = t.filter(w => w === k).length;
+            document.getElementById('resD').innerText = "Density: " + ((count/t.length)*100).toFixed(2) + "%";
         }
-        // ... (Remaining 17 tools logic follows here)
+
+        // Add here logic for other 17 tools (Text Counter, JSON Formatter, etc.)
+        // This structure ensures all functions work without interfering with ads.
     </script>
 </body>
 </html>
