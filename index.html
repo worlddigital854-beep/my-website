@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Web Tools</title>
+    <!-- Adsterra Codes -->
     <script type="text/javascript" src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
+    <script type="text/javascript" src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
+    <script type="text/javascript" src="https://pl30177250.effectivecpmnetwork.com/e5/f6/28/e5f628835d9dab727aa45b00ec2af2ed.js"></script>
+    
     <style>
         body { background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; }
         .search-container { text-align: center; margin-bottom: 30px; }
@@ -37,7 +41,9 @@
         <div class="card"><h3>C to F</h3><input id="c" placeholder="Celsius"><button onclick="alert((document.getElementById('c').value*9/5+32)+' °F')">Convert</button></div>
         <div class="card"><h3>Age Calc</h3><input id="y" placeholder="Birth Year"><button onclick="alert('Age: '+(2026-document.getElementById('y').value))">Check</button></div>
         <div class="card"><h3>Base64 Encode</h3><input id="b64" placeholder="Text"><button onclick="alert(btoa(document.getElementById('b64').value))">Encode</button></div>
-        <div class="card"><h3>Thumbnail</h3><input id="ytlink" placeholder="Video URL"><button onclick="window.open('https://www.youtube.com/watch?v='+document.getElementById('ytlink').value.split('v=')[1])">Open</button></div>
+        
+        <div class="card"><h3>Thumbnail</h3><input id="y3" placeholder="Video URL"><button onclick="generateThumbnail()">Generate Thumbnail</button><div id="thumbnail-display"></div></div>
+        
         <div class="card"><h3>Hashtag</h3><input id="hash" placeholder="Topic"><button onclick="alert('#'+document.getElementById('hash').value+' #viral #trending #fyp')">Generate</button></div>
         <div class="card"><h3>Caption</h3><input id="capt" placeholder="Topic"><button onclick="alert('Best '+document.getElementById('capt').value+' of the day! 🔥')">Generate</button></div>
         <div class="card"><h3>Typing Test</h3><input id="typeText" placeholder="Type: Quick brown fox"><button onclick="if(document.getElementById('typeText').value=='Quick brown fox') alert('Correct!'); else alert('Try again!');">Start Test</button></div>
@@ -62,6 +68,16 @@
     </div>
 
     <script>
+    function generateThumbnail() {
+        const url = document.getElementById('y3').value;
+        const videoId = url.split('v=')[1]?.split('&')[0];
+        if (videoId) {
+            const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            document.getElementById('thumbnail-display').innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail" style="width:100%; border-radius:8px; margin-top:10px;">';
+        } else {
+            alert("Please enter a valid YouTube URL");
+        }
+    }
     async function handleTool(tool) {
         const topic = document.getElementById('topicInput').value;
         const apiKey = document.getElementById('userApiKey').value;
